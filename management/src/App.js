@@ -1,11 +1,22 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Customer from './components/Customer';
+
+const customer = {
+  'name' : '홍길동',
+  'birthday' : '961222',
+  'gender' : '남자',
+  'job' : '대학생'
+}
 
 function App() {
   return (
-    <header className="gray-background">
-      <h2>test</h2>
-    </header>
+      <Customer
+        name = {customer.name}
+        birthday = {customer.birthday}
+        gender = {customer.gender}
+        job = {customer.job}
+      />
   );
 }
 

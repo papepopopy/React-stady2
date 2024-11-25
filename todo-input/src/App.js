@@ -1,10 +1,19 @@
 import React, {Component} from 'react';
 import './App.css';
 import MyComponent from './MyComponent';
+import Counter from './Counter';
+import Say from './Say';
+
 
 const App = () => {
-  return <MyComponent name='  `test'>리액트</MyComponent>
-  //return <MyComponent>리액트</MyComponent>;
+  return <>
+        {/* <MyComponent name='React' favoriteNumber={1}>
+          리액트
+        </MyComponent> */}
+        {/* <Counter /> */}
+        <Say />
+  </>
+  //return <MyComponent>리액트</MyComponent>; 
   //return <MyComponent />; //MyComponent에서 name 설정
   //return <MyComponent name="React" />;
 
