@@ -3,6 +3,7 @@ import './App.css';
 import MyComponent from './MyComponent';
 import Counter from './Counter';
 import Say from './Say';
+import EventPractice from './EventPractive';
 
 
 const App = () => {
@@ -11,7 +12,8 @@ const App = () => {
           리액트
         </MyComponent> */}
         {/* <Counter /> */}
-        <Say />
+        {/* <Say /> */}
+        <EventPractice />
   </>
   //return <MyComponent>리액트</MyComponent>; 
   //return <MyComponent />; //MyComponent에서 name 설정
