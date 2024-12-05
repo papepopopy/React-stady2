@@ -4,17 +4,29 @@ import MyComponent from './MyComponent';
 import Counter from './Counter';
 import Say from './Say';
 import EventPractice from './EventPractive';
+import ValidationSample from './ValidationSample';
+import ScrollBox from './ScorllBox';
 
 
-const App = () => {
-  return <>
-        {/* <MyComponent name='React' favoriteNumber={1}>
-          리액트
-        </MyComponent> */}
-        {/* <Counter /> */}
-        {/* <Say /> */}
-        <EventPractice />
-  </>
+// const App = () => {
+class App extends Component {
+  render() {
+
+    return <>
+      <ScrollBox ref={(ref) => this.scrollBox=ref}/>
+      <button onClick={() => this.scrollBox.scrollToBottom()}>
+        맨 밑으로
+      </button>
+      {/* <MyComponent name='React' favoriteNumber={1}>
+        리액트
+      </MyComponent> */}
+      {/* <Counter /> */}
+      {/* <Say /> */}
+      {/* <EventPractice /> */}
+      {/* <ValidationSample/> */}
+      <ScrollBox/>
+    </>
+  };
   //return <MyComponent>리액트</MyComponent>; 
   //return <MyComponent />; //MyComponent에서 name 설정
   //return <MyComponent name="React" />;
