@@ -50,3 +50,9 @@ img.food-img {
   gap: 15px;
   font-size: 22px;
 }
+
+.modal {
+  padding: 20px;
+  background-color: #eee;
+  text-align: left;
+}
