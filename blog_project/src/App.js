@@ -21,6 +21,8 @@ function App() {
 
   let [modal, setModal] = useState(false);
 
+  //selectedTitle에 값을 저장하여 팝업에 전달
+  let [selectedTitle, setSelectedTitle] = useState("");
   
   // [1, 2, 3].map(function(a) {
     //map 사용법
@@ -44,7 +46,7 @@ function App() {
 
           //title[0] = 'test'; 값을 고정해버림
           let copy = [...title]; // ...는 괄호를 벗기고 변경후 다시 생성
-          copy[0] = "test";
+          copy[0] = "글 수정";
           b(copy);
         }}>
           글 수정
@@ -77,14 +79,17 @@ function App() {
             return (
               <li>
                 <img className="food-img" src="" alt="음식 이미지"></img>
-                <h5 onClick={() => {setModal(true)}}>{title[i]}</h5>
+                <h5 onClick={() => {
+                    setModal(true);
+                    setSelectedTitle(title[i])
+                  }}>{title[i]}</h5>
                 <div className="text-box">
                   <span className="date">2024.12.01</span>
                   <span onClick={() => {
-                    let likeCnt = [...like];
-                    likeCnt[i]++;
-                    afterLike(likeCnt);
-                  }}
+                      let likeCn1t = [...like];
+                      likeCnt[i]++;
+                      afterLike(likeCnt);
+                    }}
                   >❤ {like[i]}</span>
                 </div>
               </li>
@@ -96,7 +101,7 @@ function App() {
       </div>
       
       {
-        modal == true ? <Modal color={"red"} title={title} /> : null
+        modal == true ? <Modal color={"red"} b={b} title={selectedTitle} /> : null
       }
 
     </div>
@@ -115,10 +120,18 @@ function Modal(props) { //대문자로 이름을 적어야함
   return (
     <>
       <div className='modal' style={{background : props.color}}>
-        <h4>{props.title[0]}</h4>
+        <h4>{props.title}</h4>
         <p>date</p>
         <p>text</p>
-        <button>글 수정</button>
+        <button onClick={() => {
+            props.title(["글 수정 완료"])
+            // let copy = [...props.title];
+            // copy[0] = "글 수정 완료";
+            // props.b(copy);
+          }}
+        >
+            글 수정
+        </button>
       </div>
     </>
   )
