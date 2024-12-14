@@ -1,60 +1,35 @@
+/* eslint-disable */
+
 import { useState } from "react";
 import "./App.css";
 
 function App() {
 
-  // let post = "강남 우동 맛집"
-  // var data = "red";
-  let {title, setTitle} = useState(["남자코트 추천", "강담 우동 맛집", "파이썬 독학"]);
-  let [like, setLike] = useState(0);
-  let [modal, setModal] = useState(false);
+  let post = "강남 우동 맛집"
+  let [글제목, 글제목변경] = useState(["남자 코트 추천", "강남 우동 맛집", "파이썬 독학"]);
+
+  let [따봉, 따봉변경] = useState(0);
   
+
   return (
     <div className="App">
-      {/* 상단메뉴 */}
       <div className="black-nav">
-        <h4>ReactBlog</h4>
-        {/* <div>{post}</div>  */}
-        {/* 강남 우동 맛집 출력 */}
-        {/* <div className={data}>데이터 바인딩</div> */}
-        {/* <div className="red"></div> */}
-        {/* <div style={{color:"blue", fontSize:"30px"}}>스타일 테스트</div> */}
-        {/* {속성명:"속성값"} */}
+        <h1>블로그</h1>
       </div>
-      <button onClick={()=> {
-        let copy = [...title];
-        copy.sort();
-        setTitle(copy)
-      }}>정렬버튼</button>
-      <div className="inner_box">
-        <h5>{title}</h5>
-        <p>2월 17일 발행</p>
-        <span onClick={() => {setLike(like + 1)}}>좋아요{like}</span>
-      </div>
-      <div className="inner_box">
-        <h5>{title}</h5>
-        <p>2월 17일 발행</p>
-      </div>
-      <div className="inner_box">
-        <h5>{title}</h5>
-        <p>2월 17일 발행</p>
-      </div>
-      {
-        modal == true ? <Modal></Modal> : null
-      }
-      <Modal />
-    </div>
-  )
-}
+      <button onClick={() => {
+        
+        let copy = [...글제목];
+        copy[0] = "여자 코트 추천"
+        글제목변경(copy);
+      }}>글 수정</button>
 
-function Modal() {
-  return (
-    <div className="modal">
-      <h4>제목</h4>
-      <p>날짜</p>
-      <p>상세내용</p>
+      <div className="list inner_box">
+        <h2>{글제목[0]} <span onClick={() => {따봉변경(따봉+1)}}>좋아요</span> {따봉} </h2>
+        <p>2월 17일 발행</p>
+      </div>
+      
     </div>
-  )
+  );
 }
 
 export default App;
