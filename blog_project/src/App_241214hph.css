@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+ul, li, a {
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.body {
+  margin: 0 50px;
+}
+.nav {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  text-align: left;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.menu li {
+  flex: 1 1 30%;
+  margin-bottom: 15px;
+}
+img.food-img {
+  width: 100%;
+  height: 300px;
+  background-color: #000;
+  display: inline-block;
+}
+.menu h5 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+.date {
+  color: #999;
+}
+.text-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.type {
+  display: flex;
+  gap: 15px;
+  font-size: 22px;
+}
+
+.modal {
+  padding: 20px;
+  background-color: #eee;
+  text-align: left;
+}

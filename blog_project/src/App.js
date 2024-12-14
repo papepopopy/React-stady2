@@ -1,148 +1,59 @@
-/* eslint-disable */
-//필요없는 워딩 삭제 메시지 안뜨게끔 함
-
-import './App.css';
-import {useState} from 'react';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
 
-  //임의의 서버에서 들고온 자료
-  let post = "해물 파전"
-
-  let [title, b] = useState(["파스타", "해물파전", "막걸리", "소주"])
-  
-  //좋아요
-  let [like, afterLike] = useState([0,0,0,0]);
-  function likeNum() {
-    afterLike(like+1)
-  }
-
-  //let [menuTitle, c] = useState(["파스타"])
-
+  // let post = "강남 우동 맛집"
+  // var data = "red";
+  let {title, setTitle} = useState(["남자코트 추천", "강담 우동 맛집", "파이썬 독학"]);
+  let [like, setLike] = useState(0);
   let [modal, setModal] = useState(false);
-
-  //selectedTitle에 값을 저장하여 팝업에 전달
-  let [selectedTitle, setSelectedTitle] = useState("");
   
-  // [1, 2, 3].map(function(a) {
-    //map 사용법
-    //console.log(a); 
-    // return "123321"
-  // })
-
-
-  // state 변경함수 
-  // 기존 값을 바꾸는 함수로 기존과 신규 값이 같으면 변경하지 않음
-
   return (
     <div className="App">
-      <Navi />
-      <div className="body">
-
-        <button onClick={() => {
-          // let arr = [1, 2, 3];
-          // array 해당 1, 2, 3 데이터 위치를 저장해 놓음 
-          // 그러므로 object or array 경우 ... 을 사용하여야함
-
-          //title[0] = 'test'; 값을 고정해버림
-          let copy = [...title]; // ...는 괄호를 벗기고 변경후 다시 생성
-          copy[0] = "글 수정";
-          b(copy);
-        }}>
-          글 수정
-        </button>
-
-        <div className="type">
-          {/* <div className="btn" onClick={()=>{
-              let copyTitle = [...menuTitle];
-              copyTitle = "양식";
-              c(copyTitle);
-            }}>양식</div>
-          <div className="btn" onClick={()=>{
-              let copyTitle = [...menuTitle];
-              copyTitle = "한식";
-              c(copyTitle);
-            }}>한식</div>
-          <div className="btn" onClick={()=>{
-              let copyTitle = [...menuTitle];
-              copyTitle = "중식";
-              c(copyTitle);
-            }}>중식</div>*/}
-+        </div>
-        
-        {/* <h4 className="main_title">{menuTitle}</h4> */}
-
-        <ul className="menu">
-
-        {
-          title.map(function(a, i) {
-            return (
-              <li>
-                <img className="food-img" src="" alt="음식 이미지"></img>
-                <h5 onClick={() => {
-                    setModal(true);
-                    setSelectedTitle(title[i])
-                  }}>{title[i]}</h5>
-                <div className="text-box">
-                  <span className="date">2024.12.01</span>
-                  <span onClick={() => {
-                      let likeCn1t = [...like];
-                      likeCnt[i]++;
-                      afterLike(likeCnt);
-                    }}
-                  >❤ {like[i]}</span>
-                </div>
-              </li>
-            )
-          })
-        }
-        </ul>
-        {/* <Modal /> */}
+      {/* 상단메뉴 */}
+      <div className="black-nav">
+        <h4>ReactBlog</h4>
+        {/* <div>{post}</div>  */}
+        {/* 강남 우동 맛집 출력 */}
+        {/* <div className={data}>데이터 바인딩</div> */}
+        {/* <div className="red"></div> */}
+        {/* <div style={{color:"blue", fontSize:"30px"}}>스타일 테스트</div> */}
+        {/* {속성명:"속성값"} */}
       </div>
-      
+      <button onClick={()=> {
+        let copy = [...title];
+        copy.sort();
+        setTitle(copy)
+      }}>정렬버튼</button>
+      <div className="inner_box">
+        <h5>{title}</h5>
+        <p>2월 17일 발행</p>
+        <span onClick={() => {setLike(like + 1)}}>좋아요{like}</span>
+      </div>
+      <div className="inner_box">
+        <h5>{title}</h5>
+        <p>2월 17일 발행</p>
+      </div>
+      <div className="inner_box">
+        <h5>{title}</h5>
+        <p>2월 17일 발행</p>
+      </div>
       {
-        modal == true ? <Modal color={"red"} b={b} title={selectedTitle} /> : null
+        modal == true ? <Modal></Modal> : null
       }
-
+      <Modal />
     </div>
-  );
-}
-
-/*
-  const Modal = () => {
-    return(
-    )
-  }
-*/
-{/* 컨포넌트 만드는 법 : function =>  return(html) => <함수명></함수명> */}
-function Modal(props) { //대문자로 이름을 적어야함
-  //컴포넌트는 state를 가져다 쓰기가 어렵다...
-  return (
-    <>
-      <div className='modal' style={{background : props.color}}>
-        <h4>{props.title}</h4>
-        <p>date</p>
-        <p>text</p>
-        <button onClick={() => {
-            props.title(["글 수정 완료"])
-            // let copy = [...props.title];
-            // copy[0] = "글 수정 완료";
-            // props.b(copy);
-          }}
-        >
-            글 수정
-        </button>
-      </div>
-    </>
   )
 }
 
-//연습으로 제작 header
-function Navi() {
+function Modal() {
   return (
-    <>
-      <h3 className="nav">blog</h3>
-    </>
+    <div className="modal">
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
   )
 }
 
