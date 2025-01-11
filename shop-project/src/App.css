@@ -3,11 +3,13 @@
   background-image: url("./img/main_bg01.jpg");
   background-size: cover;
   background-position: center;
+  margin-bottom: 50px;
 }
-
+.item-box {
+  flex-wrap: wrap;
+} 
 .box {
-  /* background-color: #282c34; */
-  height: 30px;
+  margin-bottom: 30px;
 }
 .box img {
   width: 80%;

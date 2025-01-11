@@ -1,8 +1,13 @@
-import './App.css';
+import { useState } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-// import mainBg from "./img/main-bg.jpg";
+import './App.css';
+import {data} from './data.js'
 
 function App() {
+
+  let [shoes] = useState(data)
+  console.log(shoes)
+
   return (
     <div className="App">
       <Navbar bg="dark" data-bs-theme="dark">
@@ -11,7 +16,7 @@ function App() {
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricsing">Pricing</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -19,26 +24,28 @@ function App() {
       {/* <div className='main-bg' style={{backgroundImage: 'url({'+mainBg+'})'}}> */}
       </div>
       <div className='container'>
-        <div className='row'>
-          <div className='col-md-4 box'>
-            <img src='https://codingapple1.github.io/shop/shoes1.jpg'/>
-            <h4>상품명</h4>
-            <p>상품 설명</p>
-          </div>
-          <div className='col-md-4 box'>
-            <img src='https://codingapple1.github.io/shop/shoes2.jpg'/>
-            <h4>상품명</h4>
-            <p>상품 설명</p>
-          </div>
-          <div className='col-md-4 box'>
-            <img src='https://codingapple1.github.io/shop/shoes3.jpg'/>
-            <h4>상품명</h4>
-            <p>상품 설명</p>
-          </div>
+        <div className='row item-box'>
+            {
+              shoes.map(function(a, i) {
+                return <Item key={i} title={a.title} price={a.price}/>
+              })
+            }
         </div>
       </div>
     </div>
   );
+}
+
+function Item(props) {
+  return(
+    <>
+        <div className='col-md-4 box'>
+          <img src='https://codingapple1.github.io/shop/shoes1.jpg'/>
+          <h4>{props.title}</h4>
+          <p>{props.price}</p>
+        </div>
+    </>
+  )
 }
 
 export default App;
